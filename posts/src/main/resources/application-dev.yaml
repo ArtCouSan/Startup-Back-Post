@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:15432/db-v1-posts
+    username: postgres
+    password: Postgres2020!

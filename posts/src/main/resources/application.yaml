@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: v1-posts
+  profiles:
+    active: prod
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+#eureka:
+#  instance:
+#    hostname: discovery-server
+#    metadataMap:
+#      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#    preferIpAddress: true
+#    leaseRenewalIntervalInSeconds: 5
+#    lease-expiration-duration-in-seconds: 5
+#  client:
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://discovery-server:8761/eureka/, http://localhost:8761/eureka/

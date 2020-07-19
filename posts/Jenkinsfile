@@ -2,6 +2,7 @@ pipeline {
     agent any
 	tools {
 		maven '3.6.3'
+        docker 'docker'
 	}
     environment { 
         CI = 'true'
@@ -25,7 +26,6 @@ pipeline {
         // }
         stage('Deliver') {
             steps {
-                sh 'ls'
                 sh 'docker-compose up -d' 
             }
         }

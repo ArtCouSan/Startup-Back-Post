@@ -1,22 +1,17 @@
 pipeline {
-    agent {
-        docker {
-            image 'openjdk:11'
-            args '-p 8081:8081'
-        }
-    }
+    agent any
     environment { 
         CI = 'true'
     }
     stages {
         stage('Build') {
             steps {
-                sh 'cd posts/'
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+                sh 'mvn -version'
+                sh 'mvn clean install' 
             }
             post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
+                always {
+                    cleanWs()
                 }
             }
         }

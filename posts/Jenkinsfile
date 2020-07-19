@@ -19,7 +19,7 @@ pipeline {
                 sh 'cd posts/; mvn -Dtest=br.com.posts.** test' 
             }
         }
-        stage('Deliver') {
+        stage('Delivery') {
             steps {
                 sh 'docker-compose up -d' 
             }

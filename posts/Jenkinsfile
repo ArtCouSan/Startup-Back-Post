@@ -12,11 +12,6 @@ pipeline {
                 sh 'mvn -version'
                 sh 'cd posts/; mvn clean install'
             }
-            post {
-                always {
-                    cleanWs()
-                }
-            }
         }
         // stage('Test') {
         //     steps {

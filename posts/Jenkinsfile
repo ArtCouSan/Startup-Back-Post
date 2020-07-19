@@ -18,9 +18,19 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
+        // stage('Test') {
+        //     steps {
+        //         sh 'cd posts/; mvn -Dtest=br.com.posts.** test' 
+        //     }
+        //     post {
+        //         always {
+        //             cleanWs()
+        //         }
+        //     }
+        // }
+        stage('Deliver') {
             steps {
-                sh 'cd posts/; mvn -Dtest=br.com.posts.** test' 
+                sh 'docker-compose up -d' 
             }
         }
     }

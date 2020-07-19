@@ -10,9 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -version'
-                sh 'cd posts/'
-                sh 'ls'
-                sh 'mvn clean install' 
+                sh 'cd posts/; mvn clean install'
             }
             post {
                 always {

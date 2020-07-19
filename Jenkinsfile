@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven '3.6.3'
+        Maven '3.6.3'
     }
     environment { 
         CI = 'true'

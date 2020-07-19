@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn -Dtest=br.com.posts.** test' 
+                sh 'cd posts/; mvn -Dtest=br.com.posts.** test' 
             }
         }
     }

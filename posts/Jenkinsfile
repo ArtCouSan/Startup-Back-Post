@@ -14,19 +14,13 @@ pipeline {
                 sh 'cd posts/; mvn clean install'
             }
         }
-        // stage('Test') {
-        //     steps {
-        //         sh 'cd posts/; mvn -Dtest=br.com.posts.** test' 
-        //     }
-        //     post {
-        //         always {
-        //             cleanWs()
-        //         }
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                sh 'cd posts/; mvn -Dtest=br.com.posts.** test' 
+            }
+        }
         stage('Deliver') {
             steps {
-                sh 'export DOCKER_HOST=127.0.0.1'
                 sh 'docker-compose up -d' 
             }
         }

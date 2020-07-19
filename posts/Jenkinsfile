@@ -11,6 +11,7 @@ pipeline {
             steps {
                 sh 'mvn -version'
                 sh 'cd posts/'
+                sh 'ls'
                 sh 'mvn clean install' 
             }
             post {

@@ -2,7 +2,7 @@ pipeline {
     agent any
 	tools {
 		maven '3.6.3'
-        docker 'docker'
+        dockerTool 'docker'
 	}
     environment { 
         CI = 'true'

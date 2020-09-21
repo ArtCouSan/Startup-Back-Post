@@ -46,4 +46,17 @@ public class Post {
     @Column(name = "POST_STATUS")
     private PostStatusEnum status;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "TB_RELATION_POST_TYPE",
+            joinColumns = @JoinColumn(name = "POST_ID", referencedColumnName = "POST_ID"),
+            inverseJoinColumns = @JoinColumn(name = "TYPE_POST_ID",
+                    referencedColumnName = "TYPE_POST_ID"))
+    private List<TypePost> types;
+
+    @OneToMany(mappedBy = "post")
+    private List<Like> likes;
+
+    @OneToMany(mappedBy = "post")
+    private List<ContactPost> contactPosts;
+
 }

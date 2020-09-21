@@ -8,8 +8,8 @@ services:
       POSTGRES_PASSWORD: "Postgres2020!"
     ports:
        - '15432:5432'
-    links:
-      - v1-posts
+#    links:
+#      - v1-posts
   db-admin-v1-posts:
     image: dpage/pgadmin4
     environment:
@@ -19,13 +19,13 @@ services:
       - '16543:80'
     depends_on:
      - db-v1-posts
-  v1-posts:
-    restart: on-failure
-    build:
-      context: ./posts/
-      dockerfile: ./Dockerfile
-    ports:
-      - '8081:8081'
-    environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8081
-      - PROFILE=dev
+#  v1-posts:
+#    restart: on-failure
+#    build:
+#      context: ./posts/
+#      dockerfile: ./Dockerfile
+#    ports:
+#      - '8081:8081'
+#    environment:
+#      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8081
+#      - PROFILE=dev

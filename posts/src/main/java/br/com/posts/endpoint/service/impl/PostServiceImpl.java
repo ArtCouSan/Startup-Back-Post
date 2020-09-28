@@ -1,7 +1,6 @@
 package br.com.posts.endpoint.service.impl;
 
 import br.com.posts.endpoint.dto.PostAlterDTO;
-import br.com.posts.endpoint.dto.PostListDTO;
 import br.com.posts.endpoint.dto.PostSaveDTO;
 import br.com.posts.endpoint.entity.Post;
 import br.com.posts.endpoint.enums.PostStatusEnum;
@@ -11,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -43,6 +41,13 @@ public class PostServiceImpl implements PostService {
         post.setTitle(postAlter.getTitle() != null ? postAlter.getTitle() : post.getTitle());
         post.setDescription(postAlter.getDescription() != null ? postAlter.getDescription() : post.getDescription());
         post.setDateAlter(this.dateNow());
+        post.setHelpBudget(postAlter.getHelpBudget());
+        post.setHelpWork(postAlter.getHelpWork());
+        post.setResponsible(postAlter.getResponsible() != null ? postAlter.getResponsible() : post.getResponsible());
+        post.setCep(postAlter.getCep() != null ? postAlter.getCep() : post.getCep());
+        post.setAddressComplement(postAlter.getAddressComplement() != null ? postAlter.getAddressComplement() : post.getAddressComplement());
+        post.setCellphone(postAlter.getCellphone() != null ? postAlter.getCellphone() : post.getCellphone());
+
         return postRepository.save(post);
     }
 

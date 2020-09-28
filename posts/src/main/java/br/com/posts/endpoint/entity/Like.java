@@ -1,5 +1,6 @@
 package br.com.posts.endpoint.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +25,10 @@ public class Like {
     @Column(name = "DT_CRIACAO", nullable = false)
     private LocalDateTime dtCriacao;
 
-    @Column(name = "ID_USER", nullable = false)
-    private Long usuario;
+    @Column(name = "USER_ID", nullable = false)
+    private String idUser;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="POST_ID")
     private Post post;

@@ -4,7 +4,7 @@ spring:
   application:
     name: v1-posts
   profiles:
-    active: prod
+    active: dev
   jpa:
     database: postgresql
     show-sql: true

@@ -1,7 +1,6 @@
 package br.com.posts.endpoint.service;
 
 import br.com.posts.endpoint.dto.PostAlterDTO;
-import br.com.posts.endpoint.dto.PostListDTO;
 import br.com.posts.endpoint.dto.PostSaveDTO;
 import br.com.posts.endpoint.entity.Post;
 

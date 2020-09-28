@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,17 +19,41 @@ public class PostSaveDTO {
     private String title;
     private String description;
     private List<PostSaveFileDTO> files;
+    private String addressComplement;
+    private String cep;
+    private String cellphone;
+    private String responsible;
+    private Boolean helpWork;
+    private Boolean helpBudget;
+    private String howHelp;
+    private String category;
+    private String email;
+    private BigDecimal helpBudgetAmount;
+    private String helpWorkCategory;
+    private String idUser;
 
     public Post parsePostDTO() {
         Post post = new Post();
         post.setTitle(this.title);
         post.setDescription(this.description);
+        post.setAddressComplement(this.addressComplement);
+        post.setCellphone(cellphone);
+        post.setCep(this.cep);
+        post.setResponsible(this.responsible);
+        post.setHelpWork(this.helpWork);
+        post.setHelpBudget(this.helpBudget);
+        post.setHowHelp(this.howHelp);
+        post.setCategory(this.category);
+        post.setEmail(this.email);
+        post.setHelpBudgetAmount(this.helpBudgetAmount);
+        post.setHelpWorkCategory(this.helpWorkCategory);
+        post.setIdUser(this.getIdUser());
 
         List<File> files = new ArrayList<>();
 
-        Optional<List<PostSaveFileDTO>> optionalList =  Optional.ofNullable(this.files);
+        Optional<List<PostSaveFileDTO>> optionalList = Optional.ofNullable(this.files);
 
-        if(optionalList.isPresent()) {
+        if (optionalList.isPresent()) {
             this.files.forEach(image -> {
                 File file = new File();
                 file.setData(image.getData());

@@ -1,9 +1,9 @@
 package br.com.posts.endpoint.controller;
 
-import br.com.posts.endpoint.dto.PostAlterDTO;
-import br.com.posts.endpoint.dto.PostListDTO;
-import br.com.posts.endpoint.dto.PostSaveDTO;
+import br.com.posts.endpoint.dto.*;
 import br.com.posts.endpoint.entity.Post;
+import br.com.posts.endpoint.service.CommentService;
+import br.com.posts.endpoint.service.LikeService;
 import br.com.posts.endpoint.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +16,13 @@ import java.util.List;
 public class PostsController {
 
     private final PostService postService;
+    private final LikeService likeService;
+    private final CommentService commentService;
 
-    public PostsController(PostService postService) {
+    public PostsController(PostService postService, LikeService likeService, CommentService commentService) {
         this.postService = postService;
+        this.likeService = likeService;
+        this.commentService = commentService;
     }
 
     @PostMapping
@@ -44,6 +48,21 @@ public class PostsController {
     @GetMapping
     public ResponseEntity<List<Post>> listPost() {
         return new ResponseEntity<List<Post>>(this.postService.listPost(), HttpStatus.OK);
+    }
+
+    @PostMapping("/{id}/like")
+    public ResponseEntity<Post> likePost(@PathVariable Long id, @RequestBody LikeDTO likeDTO){
+
+        Post post = likeService.likePost(id, likeDTO);
+        return new ResponseEntity<Post>(post, HttpStatus.OK);
+    }
+
+    @PostMapping("/{id}/comment")
+    public ResponseEntity<Void> commentPost(@PathVariable Long id, @RequestBody CommentDTO commentDTO){
+
+        commentService.commentSave(id, commentDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
 }

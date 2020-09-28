@@ -35,6 +35,6 @@ public class Comment {
     private Post post;
 
     @Column(name = "ID_USER", nullable = false)
-    private Long usuario;
+    private String usuario;
 
 }

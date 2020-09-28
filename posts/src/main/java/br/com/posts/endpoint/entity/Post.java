@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -29,6 +30,9 @@ public class Post {
     @Column(name = "POST_DESCRIPTION")
     private String description;
 
+    @Column(name = "POST_ID_USER")
+    private String idUser;
+
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post", fetch = FetchType.EAGER)
     private List<File> files;
@@ -46,17 +50,40 @@ public class Post {
     @Column(name = "POST_STATUS")
     private PostStatusEnum status;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "TB_RELATION_POST_TYPE",
-            joinColumns = @JoinColumn(name = "POST_ID", referencedColumnName = "POST_ID"),
-            inverseJoinColumns = @JoinColumn(name = "TYPE_POST_ID",
-                    referencedColumnName = "TYPE_POST_ID"))
-    private List<TypePost> types;
+    @Column(name = "POST_HELP_WORK")
+    private Boolean helpWork;
+
+    @Column(name = "POST_HELP_BUDGET")
+    private Boolean helpBudget;
+
+    @Column(name = "POST_CEP_COMPLEMENT")
+    private String addressComplement;
+
+    @Column(name = "POST_CEP")
+    private String cep;
+
+    @Column(name = "POST_CELLPHONE")
+    private String cellphone;
+
+    @Column(name = "POST_EMAIL")
+    private String email;
+
+    @Column(name = "POST_HELP_BUDGET_AMOUNT")
+    private BigDecimal helpBudgetAmount;
+
+    @Column(name = "POST_HELP_WORK_CATEGORY")
+    private String helpWorkCategory;
+
+    @Column(name = "POST_RESPONSIBLE")
+    private String responsible;
+
+    @Column(name = "POST_HOW_HELP")
+    private String howHelp;
+
+    @Column(name = "POST_CATEGORY")
+    private String category;
 
     @OneToMany(mappedBy = "post")
     private List<Like> likes;
-
-    @OneToMany(mappedBy = "post")
-    private List<ContactPost> contactPosts;
 
 }
